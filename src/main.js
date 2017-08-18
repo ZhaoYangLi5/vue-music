@@ -15,9 +15,9 @@ fastclick.attach(document.body)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  render: h => h(App),
   router,
-  store,
-  render: h => h(App)
+  store
 })
 // vue-lazyload 的注册
 Vue.use(VueLazyload, {

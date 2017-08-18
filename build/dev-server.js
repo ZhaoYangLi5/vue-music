@@ -43,6 +43,22 @@ var app = express()
    })
  })
 
+ apiRoutes.get('/lyric', function(req, res){
+  var url = 'https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg'
+
+  axios.get(url, {
+     headers: {
+       'authority': 'c.y.qq.com',
+       referer: 'https://y.qq.com/portal/playlist.html'
+     },
+     params: req.query
+   }).then((response) => {
+     res.json(response.data)
+   }).catch((e) => {
+     console.log(e)
+   })
+ })
+
 app.use('/api', apiRoutes)
 
 var compiler = webpack(webpackConfig)
